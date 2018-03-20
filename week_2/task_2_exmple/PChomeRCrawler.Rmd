@@ -1,4 +1,17 @@
+---
+title: "RCrawler"
+author: "hausin"
+date: "2018年3月14日"
+output: html_document
+---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## RCrawler
+
+```{r RCrawler}
 library(httr)
 library(knitr)
 
@@ -7,3 +20,5 @@ res = GET(url)
 res_json = content(res)
 raw = (data.frame(do.call(rbind,res_json$prods)))
 kable(raw)
+## Show Results
+
