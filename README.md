@@ -4,16 +4,16 @@
 謝謝大家, 請多多指教!
 
 # WEEK 1
-建立Github帳號
+建立Github帳號 <p>
 完成 HW_1
 
 # WEEK 2
-認識爬蟲, Rmarkdown
-不同種網頁結構HTML, JAVA
-完成 HW_2, practice練習
+認識爬蟲, Rmarkdown <p>
+不同種網頁結構HTML, JAVA <p>
+完成 HW_2, practice練習 <p>
 目標: 繼續學習各種網頁爬蟲方式, 了解css與 xpath結構 (靜態)
 
 # WEEK 3
-利用ggplot2繪圖
+利用ggplot2繪圖 <p>
 完成 HW_3
  
