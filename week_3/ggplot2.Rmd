@@ -1,0 +1,56 @@
+
+---
+title: "week_3"
+author: "hausin"
+date: "2018年3月20日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## ggplot2
+```{r}
+library(ggplot2)
+head(esoph)
+```
+
+##柱狀圖 Histogram chart
+```{r}
+ggplot(esoph, aes(x=ncontrols))+geom_histogram(bins=20,fill='blue',alpha=0.5)
+```
+
+##Statistical Transformation
+```{r}
+ggplot(esoph,aes(ncontrols,agegp))+stat_bin2d(bins=20, color="white")
+```
+
+##線圖 Line chart
+```{r}
+ggplot(esoph,aes(x=agegp,ncontrols))+geom_line()+geom_point()
+```
+
+##長條圖 Bar chart
+```{r}
+ggplot(esoph,aes(x=alcgp,ncontrols))+geom_bar(stat ='identity')
+```
+
+##散佈圖 Point chart
+```{r}
+ggplot(esoph)+geom_point(aes(x=ncases,y=ncontrols,color=agegp))
+```
+
+##堆疊質方圖 Bar chart
+```{r}
+ggplot(esoph,aes(agegp,fill=alcgp))+geom_bar(position='fill')
+```
+
+##盒形圖Boxplot chart
+```{r}
+ggplot(esoph, aes(x=alcgp, y=ncontrols, color=agegp)) +geom_boxplot()
+```
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
