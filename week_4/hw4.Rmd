@@ -5,6 +5,8 @@ date: "2018年4月4日"
 output: html_document
 ---
 
+mysite: https://hausin.github.io/Hello/week_4/hw4.html
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
