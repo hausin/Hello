@@ -16,11 +16,13 @@ knitr::opts_chunk$set(echo = TRUE)
 library("RCurl")
 library("tm")
 library("rjson")
+#取得貼文中留言
 url<- "https://graph.facebook.com/v2.12/10155074900965975/comments?access_token=EAACEdEose0cBAH73mGZBP8oyYeSv8caO4z7h7xJkNDeiJwJaeiUOyetYHXeEX2i8GjExq5yySVFNHwugqaFRKfuzZCGAwosMzF7z7AHdFuRsOJnFzM8ODf8vbGY9vZBmDSsB0QiZAkZBbZAWVb7Ue4cdrMmLhD7mIjbBn7YJwVMuav6pEMbdb9J1sHU942zK8ZD&pretty=0&limit=25&after=MTY5NTcZD"
 d<-getURL(url)
 j<-fromJSON(d)
 comments<-sapply(j$data,function(j){list(comment=j$message)})
 comments
+#整理排序,清除不需要的符號, 間距等
 Cleanedcomments<-sapply(comments,function(x) iconv(enc2utf8(x), sub="byte"))
 my_corpus<- Corpus(VectorSource(Cleanedcomments))
 my_function<- content_transformer(function(x,pattern) gsub(pattern," ", x))
@@ -36,6 +38,7 @@ m<- as.matrix(my_tdm)
 words<- sort(rowSums(m), decreasing=TRUE)
 my_data<- data.frame(word=names(words),freq=words)
 #my_data
+#產生文字雲
 library(wordcloud)
 wordcloud(words=my_data$word, freq=my_data$freq, min.freq=2, max.word=500, random.order = FALSE, rot.per = 0.35, colors=brewer.pal(12, "Paired"))
 ```
