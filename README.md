@@ -20,4 +20,13 @@
 參考資料:https://rpubs.com/skydome20/R-Note4-Plotting_System <p>
  https://www.tipelse.com/article/686868.html <p>
 完成 HW_3 
+  
+# WEEK 4
+理解token,api等概念 <p>
+嘗試取自己FB文字雲, 在取得FB權限失敗, 目前還沒找出原因. <p>
+因此改取粉專文字雲 <p>
+參考資料: https://kangliping.wordpress.com/2017/04/27/r_text_mining_fanpage_rstudio/ <p>
+ https://bigdataenthusiast.wordpress.com/tag/graph-api-in-r/ <p>
+ 完成 HW_4
+  
  
