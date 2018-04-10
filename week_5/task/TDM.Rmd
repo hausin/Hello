@@ -1,0 +1,48 @@
+---
+title: "W5 TDM(task)"
+author: "hausin"
+date: "2018年4月10日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+```{R}
+library(NLP)
+library(readtext)
+library(tm)
+library(jiebaR)
+library(jiebaRD)
+
+#get text data
+page<- readtext(file = c("/Users/loy07/Desktop/homework/mic/mic1.txt",
+                         "/Users/loy07/Desktop/homework/mic/mic2.txt",
+                         "/Users/loy07/Desktop/homework/mic/mic3.txt",
+                         "/Users/loy07/Desktop/homework/mic/mic4.txt",
+                         "/Users/loy07/Desktop/homework/mic/mic5.txt"
+))
+docs<- Corpus(VectorSource(page$text))
+docnum=length(page)
+
+#tokenlized
+mixseg= worker()
+Alltoken= list()
+Allfreq= list()
+for(c in 1:docnum)
+{
+  token= list(jiebaR::segment(docs[[c]]$content, mixseg))
+  Alltoken = append(Alltoken, token)
+  #word frequency
+  freq = list(as.data.frame(table(token)))
+  Allfreq = append(Allfreq, freq)
+}
+
+#Merge All frequency table (TermDocumentMatrix)
+NewDataFrame = merge(Allfreq[[1]], Allfreq[[2]], by="token")
+
+print(NewDataFrame)
+
+```
