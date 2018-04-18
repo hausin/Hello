@@ -68,4 +68,47 @@ if(year%%4==0&&year%%100!=0){
   print("no")
 }
 
+  
+########################################################### Task 5
+
+# 猜數字遊戲
+# 1. 請寫一個由電腦隨機產生不同數字的四位數(1A2B遊戲)
+# 2. 玩家可重覆猜電腦所產生的數字，並提示猜測的結果(EX:1A2B)
+# 3. 一旦猜對，系統可自動計算玩家猜測的次數
+moves<-0
+randAns<-as.integer(sample(0:9))
+#print(randAns)
+
+while(1){
+  moves<-moves + 1
+  checkAns<-0
+  checkSame<-0
+  input<-as.integer(readline())
+  guessNum<-1:4
+  for(i in 4:1){
+    guessNum[i]<-input%%10
+    input<-input%/%10
+  }
+  #print(guessNum)
+  for(i in 1:4){
+    if(randAns[i]==guessNum[i]){
+      checkAns<-checkAns + 1
+    }
+  }
+  if(checkAns==4){
+    final<-paste("Succeed with ",moves," moves!!")
+    print(final)
+    break
+  }else{
+    for(i in 1:4){
+      for(j in 1:4){
+        if(guessNum[i]==randAns[j]){
+          checkSame<-checkSame + 1
+        }
+      }
+    }
+    clue<-paste(checkAns,"A",checkSame-checkAns,"B",sep="")
+    print(clue)
+  }
+}
 
