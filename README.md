@@ -36,9 +36,13 @@
 參考資料: http://mropengate.blogspot.tw/2016/04/tf-idf-in-r-language.html <p>
  http://rstudio-pubs-static.s3.amazonaws.com/12422_b2b48bb2da7942acaca5ace45bd8c60c.html <p>
 完成 HW_5
-  
+
+
 # WEEK 6 (project1)
 再參考老師給的範例後, 想完成http://www.jbtalks.cc/forum-674-1.html 但是在爬蟲過程中就一直無法成功, 目前還在想解決方法 <p>
 參考資料: https://ntu-csx-datascience.github.io/106-2RSampleCode/week_6/course_6/PTTBoyGirl.html <p>
  https://blog.stranity.com.tw/2017/09/20/r-%E6%96%87%E5%AD%97%E6%8E%A2%E5%8B%98-%E7%B6%B2%E9%A0%81%E7%88%AC%E8%9F%B2/  <p>
- 
+  
+
+# project 2
+https://drive.google.com/open?id=1ZZiNsaKfwRJX9V3jGtEJzDZbS4sPkwcN
