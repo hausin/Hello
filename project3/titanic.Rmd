@@ -1,0 +1,122 @@
+---
+title: "CSX_R Project 3"
+author: "hausin"
+date: "2018/06/14"
+output: html_document
+---
+my site: https://hausin.github.io/Hello/project_3/titanic.html
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Import libraries
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(rpart)
+library(rpart.plot)
+```
+
+## Read data
+```{r}
+MyData <- read.csv(file="/Users/ymc/Desktop/titanicTrain.csv", header=TRUE, sep=",", stringsAsFactors = FALSE)
+MyPred <- read.csv(file="/Users/ymc/Desktop/titanicQuestion.csv", header=TRUE, sep=",", stringsAsFactors = FALSE)
+total=nrow(MyData)
+total1=nrow(MyPred)
+t_age=0
+```
+
+## Clean my train data
+##### Remove unnecessary column 
+##### Change col.boat data to 0 & 1
+##### Fill NA age with average age
+```{r}
+for (i in 1:nrow(MyData))
+  if(is.na(MyData$age[i]) || MyData$age[i]<1){
+    total <- total - 1
+  } else {
+    t_age <- t_age + MyData$age[i]
+  }
+avage <- t_age/total
+
+for (i in 1:nrow(MyData))
+  if(is.na(MyData$age[i]) || MyData$age[i]<1){
+    MyData$age[i] <- 31.44
+  }
+
+for (i in 1:nrow(MyData))
+  if(MyData$boat[i] == ''){
+    MyData$boat[i] <- NA
+  } else {
+    MyData$boat[i] <- 1
+  }
+
+for (i in 1:nrow(MyData))
+  if(is.na(MyData$boat[i])){
+    MyData$boat[i] <- 0
+  } 
+```
+
+## Clean my test data
+##### Remove unnecessary column 
+##### Change col.boat data to 0 & 1
+##### Fill NA age with average age
+```{r}
+for (i in 1:nrow(MyPred))
+  if(is.na(MyPred$age[i]) || MyPred$age[i]<1){
+    MyPred$age[i] <- 31.44
+  }
+
+for (i in 1:nrow(MyPred))
+  if(MyPred$boat[i] == ''){
+    MyPred$boat[i] <- NA
+  } else {
+    MyPred$boat[i] <- 1
+  }
+
+for (i in 1:nrow(MyPred))
+  if(is.na(MyPred$boat[i])){
+    MyPred$boat[i] <- 0
+  } 
+```
+
+## Write train & test data
+```{r}
+write.csv(MyData, file="MyData1.csv")
+write.csv(MyPred, file="MyPred1.csv")
+```
+
+## Use python to train data
+```{r}
+#import pandas as pd
+#from sklearn.tree import DecisionTreeRegressor
+#train = pd.read_csv('/Users/ymc/Desktop/MyData2.csv')
+#test = pd.read_csv('/Users/ymc/Desktop/MyPred2.csv')
+
+##factors that will predict the price
+#desired_factors = ['boat']
+
+##set my model to DecisionTree
+#model = DecisionTreeRegressor()
+
+##set prediction data to factors that will predict, and set target to SalePrice
+#train_data = train[desired_factors]
+#test_data = test[desired_factors]
+#target = train.survived
+
+##fitting model with prediction data and telling it my target
+#model.fit(train_data, target)
+#res = model.predict(test_data)
+
+##write predicted data
+#with open('/Users/ymc/Desktop/result2.csv','a') as file:
+#    for i in range(len(res)):
+#        if(res[i]>0.5):
+#            file.write('1')
+#            file.write("\n")
+#        else:
+#            file.write('0')
+#            file.write("\n")
+```
