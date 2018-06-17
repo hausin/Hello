@@ -1,5 +1,5 @@
 ---
-title: "CSX_R Project 3"
+title: " Project 3"
 author: "hausin"
 date: "2018/06/14"
 output: html_document
