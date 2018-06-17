@@ -1,10 +1,10 @@
 ---
-title: "Project 4"
+title: "Project_4"
 author: "hausin"
 date: "2018/06/17"
 output: html_document
 ---
-my site: https://hausin.github.io/Hello/project 4/apriori.html
+my site: https://hausin.github.io/Hello/project_4/apriori.html
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
