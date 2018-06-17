@@ -1,0 +1,50 @@
+---
+title: "Project 4"
+author: "hausin"
+date: "2018/06/17"
+output: html_document
+---
+my site: https://hausin.github.io/Hello/project 4/apriori.html
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Import libraries
+```{r}
+library(Matrix)
+library(arules)
+library(arulesViz)
+```
+
+## Load data
+```{r}
+load("/Users//Desktop/titanic.raw.rdata")
+```
+
+## Apriori rules with rhs containing "Survived" only
+```{r}
+rule <- apriori(titanic.raw, 
+  parameter=list(minlen=3, supp=0.1, conf=0.7),  
+  appearance = list(default="lhs",
+  rhs=c("Survived=No", "Survived=Yes")))
+```
+
+## Remove useless rules
+### (useless rules will affect result so we need to remove them)
+```{r}
+sort.rule <- sort(rule, by="support")
+subset.matrix <- as.matrix(is.subset(x=sort.rule, y=sort.rule))
+subset.matrix[lower.tri(subset.matrix, diag=T)] <- NA
+redundant <- colSums(subset.matrix, na.rm=T) >= 1
+sort.rule <- sort.rule[!redundant]
+```
+
+## Visualize data
+```{r}
+plot(sort.rule)
+plot(sort.rule, method="graph")
+```
+
+## The result is females are easier to survive, male crews
+## and 3rd class almost dead
