@@ -4,7 +4,7 @@ author: "hausin"
 date: "2018/06/14"
 output: html_document
 ---
-my site: https://hausin.github.io/Hello/project_3/titanic.html
+my site: https://hausin.github.io/Hello/project3/titanic.html
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
