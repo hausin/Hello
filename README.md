@@ -1,4 +1,4 @@
-# Hello
+# My R language Course Exercises
 大家好, 我叫陳浩欣 <p>
 希望透過這門課可以學會如何用R做資料分析 <p>
 謝謝大家, 請多多指教!
